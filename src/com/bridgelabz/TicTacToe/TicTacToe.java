@@ -62,24 +62,51 @@ public class TicTacToe {
         showBoard();
     }
 
+    public static void computerTurn() {
+        int computerPosition;
+        while (true) {
+            computerPosition = (int) (Math.floor(Math.random()*10%9)+1);
+            if (validPosition(computerPosition)) {
+                board[computerPosition] = computerChoice;
+                break;
+            }
+        }
+        System.out.println("Computer entered " + computerChoice + " at position : " + computerPosition);
+        showBoard();
+    }
+
     // UC5: Ensures the desired position is free or not
     public static boolean validPosition(int position) {
         if (board[position] == ' ')
             return true;
         else {
-            System.out.println("Already occupied!");
             return false;
         }
     }
 
     //UC6: Toss to check who plays first
     public static void whoPlayFirst() {
-        int toss = (int) (Math.floor(Math.random()*10%2));
-        if (toss == USER) {
+        int tossWon = (int) (Math.floor(Math.random()*10%2));
+        if (tossWon == USER) {
             System.out.println("User/player won the toss.");
-            playerTurn();
-        } else {
+            while (true) {
+                playerTurn();
+                if (isGameFinished())
+                    break;
+                computerTurn();
+                if (isGameFinished())
+                    break;
+            }
+        } else if (tossWon == COMPUTER) {
             System.out.println("Computer won the toss.");
+            while (true) {
+                computerTurn();
+                if (isGameFinished())
+                    break;
+                playerTurn();
+                if (isGameFinished())
+                    break;
+            }
         }
     }
 
@@ -99,5 +126,24 @@ public class TicTacToe {
             return true;
         }
         return false;
+    }
+
+    public static boolean isGameFinished() {
+        if (hasWon(playerChoice)) {
+            System.out.println("Player won the game!");
+            return true;
+        }
+        if (hasWon(computerChoice)) {
+            System.out.println("Computer won the game!");
+            return true;
+        }
+        for (int i = 1; i < board.length; i++) {
+            if (board[i]== ' ') {
+                return false;
+            }
+        }
+        showBoard();
+        System.out.println("Game tie.");
+        return true;
     }
 }
