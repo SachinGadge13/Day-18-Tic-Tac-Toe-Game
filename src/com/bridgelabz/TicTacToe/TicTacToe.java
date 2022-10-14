@@ -3,6 +3,8 @@ package com.bridgelabz.TicTacToe;
 import java.util.Scanner;
 
 public class TicTacToe {
+    static final int USER = 0;
+    static final int COMPUTER = 1;
     static char[] board;
     static char playerChoice;
     static char computerChoice;
@@ -12,6 +14,7 @@ public class TicTacToe {
         createBoard();
         showBoard();
         chooseLetter();
+        whoPlayFirst();
         playerTurn();
     }
 
@@ -67,6 +70,16 @@ public class TicTacToe {
         else {
             System.out.println("Already occupied!");
             return false;
+        }
+    }
+
+    //UC6: Toss to check who plays first
+    public static void whoPlayFirst() {
+        int toss = (int) (Math.floor(Math.random()*10%2));
+        if (toss == USER) {
+            System.out.println("User/player won the toss.");
+        } else {
+            System.out.println("Computer won the toss.");
         }
     }
 }
