@@ -15,7 +15,6 @@ public class TicTacToe {
         showBoard();
         chooseLetter();
         whoPlayFirst();
-        playerTurn();
     }
 
     // UC1: Creating empty tic-tac-toe board
@@ -78,8 +77,27 @@ public class TicTacToe {
         int toss = (int) (Math.floor(Math.random()*10%2));
         if (toss == USER) {
             System.out.println("User/player won the toss.");
+            playerTurn();
         } else {
             System.out.println("Computer won the toss.");
         }
+    }
+
+    // Checks anyone won the game
+    public static boolean hasWon(char choice) {
+        if ((board[1] == choice && board[2] == choice && board[3] == choice) ||
+                (board[4] == choice && board[5] == choice && board[6] == choice) ||
+                (board[7] == choice && board[8] == choice && board[9] == choice) ||
+
+                (board[1] == choice && board[4] == choice && board[7] == choice) ||
+                (board[2] == choice && board[5] == choice && board[8] == choice) ||
+                (board[3] == choice && board[6] == choice && board[9] == choice) ||
+
+                (board[1] == choice && board[5] == choice && board[9] == choice) ||
+                (board[3] == choice && board[5] == choice && board[7] == choice)
+        ) {
+            return true;
+        }
+        return false;
     }
 }
