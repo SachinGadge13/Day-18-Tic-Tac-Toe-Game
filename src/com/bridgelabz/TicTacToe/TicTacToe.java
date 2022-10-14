@@ -12,6 +12,7 @@ public class TicTacToe {
         createBoard();
         showBoard();
         chooseLetter();
+        playerTurn();
     }
 
     // UC1: Creating empty tic-tac-toe board
@@ -47,5 +48,15 @@ public class TicTacToe {
         System.out.println(board[4]+ " | " +board[5]+ "| "+board[6]);
         System.out.println("---------");
         System.out.println(board[7]+ " | " +board[8]+ "| "+board[9]);
+    }
+
+    // UC4: ability to make move to desired position and ensures index is free
+    public static void playerTurn() {
+        System.out.println("Enter the position where you want to make a move : ");
+        int playerPosition = sc.nextInt();
+        if (board[playerPosition] == ' ') {
+            board[playerPosition] = playerChoice;
+        }
+        showBoard();
     }
 }
