@@ -22,15 +22,6 @@ public class TicTacToe {
         }
     }
 
-    public static void showBoard() {
-        System.out.println("Displaying the TicTacToe Board.");
-        System.out.println(board[1]+ " | " +board[2]+ "| "+board[3]);
-        System.out.println("---------");
-        System.out.println(board[4]+ " | " +board[5]+ "| "+board[6]);
-        System.out.println("---------");
-        System.out.println(board[7]+ " | " +board[8]+ "| "+board[9]);
-    }
-
     // UC2: Getting user input to choose either X or O
     public static void chooseLetter() {
         System.out.println("Enter the Player Choice between X | O ");
@@ -46,5 +37,15 @@ public class TicTacToe {
         } else {
             System.out.println("Invalid symbol.");
         }
+    }
+
+    // UC3: Show board
+    public static void showBoard() {
+        System.out.println("Displaying the TicTacToe Board.");
+        System.out.println(board[1]+ " | " +board[2]+ "| "+board[3]);
+        System.out.println("---------");
+        System.out.println(board[4]+ " | " +board[5]+ "| "+board[6]);
+        System.out.println("---------");
+        System.out.println(board[7]+ " | " +board[8]+ "| "+board[9]);
     }
 }
