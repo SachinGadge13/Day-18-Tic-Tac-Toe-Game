@@ -10,11 +10,13 @@ public class TicTacToe  {
     static char computerChoice;
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        System.out.println("Game Initiated.");
-        createBoard();
-        showBoard();
-        chooseLetter();
-        whoPlayFirst();
+        while (playGame()) {
+            System.out.println("\nGame Initiated.");
+            createBoard();
+            showBoard();
+            chooseLetter();
+            whoPlayFirst();
+        }
     }
 
     // UC1: Creating empty tic-tac-toe board
@@ -131,10 +133,12 @@ public class TicTacToe  {
     public static boolean isGameFinished() {
         if (hasWon(playerChoice)) {
             System.out.println("Player won the game!");
+            System.out.println("************************************* GAME OVER ***************************************\n");
             return true;
         }
         if (hasWon(computerChoice)) {
             System.out.println("Computer won the game!");
+            System.out.println("************************************* GAME OVER ***************************************\n");
             return true;
         }
         for (int i = 1; i < board.length; i++) {
@@ -144,6 +148,16 @@ public class TicTacToe  {
         }
         showBoard();
         System.out.println("Game tie.");
+        System.out.println("************************************* GAME OVER ***************************************\n");
         return true;
+    }
+
+    public static boolean playGame() {
+        System.out.println("Do u want to play game (Press 1 for YES and 0 for NO) : ");
+        int choice = sc.nextInt();
+        if (choice == 1)
+            return true;
+        else
+            return false;
     }
 }
