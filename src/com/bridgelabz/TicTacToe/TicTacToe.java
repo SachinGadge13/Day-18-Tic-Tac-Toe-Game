@@ -52,11 +52,21 @@ public class TicTacToe {
 
     // UC4: ability to make move to desired position and ensures index is free
     public static void playerTurn() {
-        System.out.println("Enter the position where you want to make a move : ");
+        System.out.println("USER Enter the position where you want to make a move : ");
         int playerPosition = sc.nextInt();
-        if (board[playerPosition] == ' ') {
+        if (validPosition(playerPosition)) {
             board[playerPosition] = playerChoice;
         }
         showBoard();
+    }
+
+    // UC5: Ensures the desired position is free or not
+    public static boolean validPosition(int position) {
+        if (board[position] == ' ')
+            return true;
+        else {
+            System.out.println("Already occupied!");
+            return false;
+        }
     }
 }
